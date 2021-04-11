@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'PostsController@index');
+Route::get('/posts/show/{post_id}', 'PostsController@show');
 
 Auth::routes();
 
