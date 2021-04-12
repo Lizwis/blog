@@ -20,12 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <script src="{{ asset('https://cdn.jsdelivr.net/npm/vue') }}"></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ asset('https://unpkg.com/element-ui/lib/theme-chalk/index.css') }}">
-    <!-- import JavaScript -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <style>
         .blog-post {
             height: 250px;
@@ -45,6 +40,7 @@
 
 <body>
     <div id="app">
+
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -95,7 +91,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -114,16 +110,6 @@
             @yield('content')
         </main>
     </div>
-
-    <script>
-        new Vue({
-            el: '#rate',
-            data: {
-                value: 3.7
-            },
-        });
-
-    </script>
 </body>
 
 </html>

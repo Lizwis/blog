@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/rating/{id}', 'Api\RateController@show');
+Route::get('/rating/store/{post}/{rating}', 'Api\RateController@store');

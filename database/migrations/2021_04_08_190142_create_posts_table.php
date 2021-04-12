@@ -18,7 +18,8 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->text('post');
-            $table->text('image');
+            $table->text('image')->nullable();
+            $table->Integer('rating')->default(0);
             $table->timestamps();
         });
     }

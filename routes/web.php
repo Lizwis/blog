@@ -19,6 +19,12 @@ Route::get('/posts/create', 'PostsController@create');
 Route::post('/post/store', 'PostsController@store');
 Route::get('/post/user_posts', 'PostsController@user_posts');
 Route::get('/post/delete/{id}', 'PostsController@delete');
+Route::get('/post/edit/{post}', 'PostsController@edit');
+Route::post('/post/update/{post}', 'PostsController@update');
+
+
+
+
 
 
 Route::post('/filter', 'FilterController@index');

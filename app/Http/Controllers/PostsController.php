@@ -37,27 +37,36 @@ class PostsController extends Controller
     {
         $data = $this->validateData();
 
-        $imagePath = $data['image'];
-        $imageResized = Image::make($imagePath)->resize(500, 400);
+        if (request()->image) {
+            $image = $this->imageResize(request()->image);
+            $array_image = ['image' => 'postsImages/' . $image];
+        }
+        auth()->user()->posts()->create(array_merge(
+            $data,
+            $array_image ?? []
+        ));
 
-
-        $imageName = time() . '.' . $data['image']->extension();
-
-
-        $imageResized->save('postsImages/' . $imageName, 80);
-
-        auth()->user()->posts()->create([
-            'title' => $data['title'],
-            'post' => $data['post'],
-            'image' => 'postsImages/' . $imageName
-        ]);
+        return redirect('/');
     }
 
-    public function edit()
+    public function edit(Post $post)
     {
+        return view('posts.edit', compact('post'));
     }
-    public function update()
+    public function update($post)
     {
+        $data = $this->validateData();
+
+        if (request()->image) {
+            $image = $this->imageResize(request()->image);
+            $array_image = ['image' => 'postsImages/' . $image];
+        }
+
+        Post::where('id', $post)->update(array_merge(
+            $data,
+            $array_image ?? []
+        ));
+        return redirect()->back();
     }
 
     public function delete(Post $id)
@@ -68,7 +77,18 @@ class PostsController extends Controller
 
     private function validateData()
     {
-        return request()->validate(['title' => 'required', 'post' => 'required', 'image' => ['required', 'image']]);
+        return request()->validate(['title' => 'required', 'post' => 'required', 'image' => '']);
+    }
+
+    private function imageResize($imagePath)
+    {
+        $imageResized = Image::make($imagePath)->resize(500, 400);
+
+        $imageName = time() . '.' . $imagePath->extension();
+
+        $imageResized->save('postsImages/' . $imageName, 80);
+
+        return $imageName;
     }
 
     public function user_posts()
