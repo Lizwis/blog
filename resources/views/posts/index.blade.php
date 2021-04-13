@@ -8,7 +8,7 @@
                 @foreach ($posts as $post)
                     <div class="col-4 mb-4">
                         <div class="col-12 rounded-top blog-post shadow"
-                            style="background-image: url(/{{ $post->image }})">
+                            style="background-image: url({{ $post->image }})">
                             @if (Auth::user())
                                 <div class="pt-2 row text-center col-12">
                                     @if (Auth::user()->id == $post->user_id)
@@ -32,7 +32,7 @@
                             </div>
                             <div class="font-weight-bold pt-2">
                                 <a class="text-dark" href="/posts/show/{{ $post->id }}">
-                                    <strong> {{ $post->title }}</strong>
+                                    <strong> {{ mb_strimwidth($post->title, 0, 40, '...') }}</strong>
                                 </a>
                             </div>
                             <div class="pt-2" style="min-height:100px">

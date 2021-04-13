@@ -22,18 +22,8 @@ Route::get('/post/delete/{id}', 'PostsController@delete');
 Route::get('/post/edit/{post}', 'PostsController@edit');
 Route::post('/post/update/{post}', 'PostsController@update');
 
-
-
-
-
-
 Route::post('/filter', 'FilterController@index');
 
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostsController@index')->name('home');

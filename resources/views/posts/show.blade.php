@@ -3,7 +3,7 @@
     <div class="col-lg-12 pt-0 mt-0">
         <div class="row">
             <div class="col-12 px-0">
-                <div class="col-12  pt-5 overlay" style="background-image: url(/{{ $post->image }}); height:300px;">
+                <div class="col-12  pt-5 overlay" style="background-image: url({{ $post->image }}); height:300px;">
                     <div class="layer">
                         <div class="container">
                             <div class="col-12 py-4 text-white" style="min-height: 100px">

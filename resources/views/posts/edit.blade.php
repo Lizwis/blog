@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="col-md-5 mx-auto pl-5 pb-2">
-                        <img src="/{{ $post->image }}" class="rounded-circle shadow" height="150px" width="150px">
+                        <img src="{{ $post->image }}" class="rounded-circle shadow" height="150px" width="150px">
                     </div>
                     <div class="form-group row">
 

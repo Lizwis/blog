@@ -19,7 +19,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts = Post::with('user')->latest()->paginate(3);
+        $posts = Post::with('user')->latest()->paginate(6);
         $postFilter = 1;
         return view('posts.index', compact('posts', 'postFilter'));
     }
@@ -39,7 +39,7 @@ class PostsController extends Controller
 
         if (request()->image) {
             $image = $this->imageResize(request()->image);
-            $array_image = ['image' => 'postsImages/' . $image];
+            $array_image = ['image' => '/postsImages/' . $image];
         }
         auth()->user()->posts()->create(array_merge(
             $data,
@@ -59,7 +59,7 @@ class PostsController extends Controller
 
         if (request()->image) {
             $image = $this->imageResize(request()->image);
-            $array_image = ['image' => 'postsImages/' . $image];
+            $array_image = ['image' => '/postsImages/' . $image];
         }
 
         Post::where('id', $post)->update(array_merge(
